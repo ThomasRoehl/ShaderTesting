@@ -1,6 +1,6 @@
 // Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 
-Shader "Tutorial/tutorialPart2"
+Shader "Tutorial/tutorialPart3"
 {
     Properties
     {
@@ -15,13 +15,9 @@ Shader "Tutorial/tutorialPart2"
 
         _ColorMask ("Color Mask", Float) = 15
 
-        // Custom Properties
-
+        // Custom
         _NoiseTex ("Noise Texture", 2D) = "white" {}
-        _DistortionDamper ("Distortion Damper", Float) = 10
-        _DistortionSpreader ("Distortion Spreader", Float) = 500
-        _TimeDamper ("Time Damper", Float) = 1000
-        // END custom
+        // END Custom
 
         [Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
     }
@@ -85,12 +81,7 @@ Shader "Tutorial/tutorialPart2"
             };
 
             sampler2D _MainTex;
-            // Custom
             sampler2D _NoiseTex;
-            float _DistortionDamper;
-            float _DistortionSpreader;
-            float _TimeDamper;
-            // END Custom
             fixed4 _Color;
             fixed4 _TextureSampleAdd;
             float4 _ClipRect;
@@ -98,10 +89,18 @@ Shader "Tutorial/tutorialPart2"
 
             v2f vert(appdata_t v)
             {
+                // Custom
+                float4 offset = float4(
+                    tex2Dlod(_NoiseTex, float4(v.vertex.x / 100 + _Time[1] / 50,v.vertex.y / 100 + _Time[1] / 50,0,0)).rg,
+                    0,
+                    0
+                );
+                // END Custom
+
                 v2f OUT;
                 UNITY_SETUP_INSTANCE_ID(v);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
-                OUT.worldPosition = v.vertex;
+                OUT.worldPosition = v.vertex + offset * 20;
                 OUT.vertex = UnityObjectToClipPos(OUT.worldPosition);
 
                 OUT.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
@@ -112,15 +111,8 @@ Shader "Tutorial/tutorialPart2"
 
             fixed4 frag(v2f IN) : SV_Target
             {
-                // Custom
-                float2 offset = float2(
-                    tex2D(_NoiseTex, float2(IN.worldPosition.y / _DistortionSpreader, _Time[1]/_TimeDamper)).r,
-                    tex2D(_NoiseTex, float2(_Time[1]/_TimeDamper, IN.worldPosition.x / _DistortionSpreader)).r
-                );
+                half4 color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
 
-                half4 color = (tex2D(_MainTex, IN.texcoord + offset / _DistortionDamper) + _TextureSampleAdd) * IN.color; // Modified this line
-                // END Custom
-                
                 #ifdef UNITY_UI_CLIP_RECT
                 color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
                 #endif
@@ -128,8 +120,6 @@ Shader "Tutorial/tutorialPart2"
                 #ifdef UNITY_UI_ALPHACLIP
                 clip (color.a - 0.001);
                 #endif
-
-                color.r = 1;
 
                 return color;
             }
