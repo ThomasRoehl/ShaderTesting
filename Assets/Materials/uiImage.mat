@@ -82,7 +82,7 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _TimeDamper: 1000
+    - _TimeDamper: 50
     - _UVSec: 0
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
