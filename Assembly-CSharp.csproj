@@ -55,6 +55,7 @@
      <None Include="Assets\Shaders\normal.shader" />
      <None Include="Assets\old\SimpleShader1.shader" />
      <None Include="Assets\Shaders\TutorialPart3.shader" />
+     <None Include="Assets\Shaders\blackspot.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/private/UnityProjects/ShaderTesting/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

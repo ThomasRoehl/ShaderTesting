@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: e81f50af4bdbd4a54a8e1a091f8c5103
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {instanceID: 0}
+  - _BlackSpot: {fileID: 2800000, guid: 61217ade17e1f40439baf4f93f7f27e1, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

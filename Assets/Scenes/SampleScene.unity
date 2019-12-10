@@ -564,7 +564,8 @@ MonoBehaviour:
   protanomaly: {fileID: 4800000, guid: deb8ee0169d6d4a428c4a4529b9bcadf, type: 3}
   tutorialPart1: {fileID: 4800000, guid: 56f7fa35eac574a16b5ccbc7bbf2676e, type: 3}
   centerRotation: {fileID: 4800000, guid: a78238c4aa7304f56bad0bef77e5d131, type: 3}
-  mode: 4
+  blackSpot: {fileID: 4800000, guid: e81f50af4bdbd4a54a8e1a091f8c5103, type: 3}
+  mode: 0
 --- !u!1 &1279848378
 GameObject:
   m_ObjectHideFlags: 0
