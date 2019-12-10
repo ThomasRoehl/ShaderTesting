@@ -10,7 +10,7 @@ public class CameraModes : MonoBehaviour
     public Shader protanopia;
     public Shader protanomaly;
     public Shader tutorialPart1;
-    public Shader tutorialPart2;
+    public Shader centerRotation;
     public int mode;
 
     private void OnRenderImage(RenderTexture src, RenderTexture dest) {
@@ -26,6 +26,9 @@ public class CameraModes : MonoBehaviour
         case 3:
             material.shader = tutorialPart1;
             break;
+        case 4:
+            material.shader = centerRotation;
+            break;
         default:
             material.shader = normal;
             break;
@@ -39,5 +42,6 @@ public class CameraModes : MonoBehaviour
         protanopia = Shader.Find("Colorblindness/protanopia");
         protanomaly = Shader.Find("Colorblindness/protanomaly");
         tutorialPart1 = Shader.Find("Tutorial/tutorialPart1");
+        centerRotation = Shader.Find("EyeProblem/centerRotation");
     }
 }

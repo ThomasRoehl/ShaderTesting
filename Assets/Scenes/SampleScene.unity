@@ -563,8 +563,8 @@ MonoBehaviour:
   protanopia: {fileID: 4800000, guid: 407368b069d834decbc962df3774faa0, type: 3}
   protanomaly: {fileID: 4800000, guid: deb8ee0169d6d4a428c4a4529b9bcadf, type: 3}
   tutorialPart1: {fileID: 4800000, guid: 56f7fa35eac574a16b5ccbc7bbf2676e, type: 3}
-  tutorialPart2: {fileID: 0}
-  mode: 0
+  centerRotation: {fileID: 4800000, guid: a78238c4aa7304f56bad0bef77e5d131, type: 3}
+  mode: 4
 --- !u!1 &1279848378
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1279848379
 MonoBehaviour:
   m_ObjectHideFlags: 0
