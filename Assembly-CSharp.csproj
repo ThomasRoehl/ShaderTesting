@@ -50,9 +50,12 @@
      <None Include="Assets\Shaders\protanopia.shader" />
      <None Include="Assets\Shaders\protanomaly.shader" />
      <None Include="Assets\Shaders\TutorialPart2.shader" />
+     <None Include="Assets\Shaders\whiteSpot.shader" />
      <None Include="Assets\Shaders\centerRotation.shader" />
+     <None Include="Assets\Shaders\gaussianBlurr.shader" />
      <None Include="Assets\Shaders\TutorialPart1.shader" />
      <None Include="Assets\Shaders\normal.shader" />
+     <None Include="Assets\Shaders\boxBlurr.shader" />
      <None Include="Assets\old\SimpleShader1.shader" />
      <None Include="Assets\Shaders\TutorialPart3.shader" />
      <None Include="Assets\Shaders\blackspot.shader" />

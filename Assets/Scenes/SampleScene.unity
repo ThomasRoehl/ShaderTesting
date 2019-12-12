@@ -565,6 +565,9 @@ MonoBehaviour:
   tutorialPart1: {fileID: 4800000, guid: 56f7fa35eac574a16b5ccbc7bbf2676e, type: 3}
   centerRotation: {fileID: 4800000, guid: a78238c4aa7304f56bad0bef77e5d131, type: 3}
   blackSpot: {fileID: 4800000, guid: e81f50af4bdbd4a54a8e1a091f8c5103, type: 3}
+  whiteSpot: {fileID: 4800000, guid: 07c61854121e04a9693d5fee28c8de72, type: 3}
+  boxBlurr: {fileID: 4800000, guid: f8cad3a75739f49518b8ce56b93ac23a, type: 3}
+  gaussianBlurr: {fileID: 4800000, guid: b9e805d4126cc4938b248d9bec5c4411, type: 3}
   mode: 0
 --- !u!1 &1279848378
 GameObject:

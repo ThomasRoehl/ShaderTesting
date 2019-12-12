@@ -60,7 +60,7 @@ Shader "EyeProblem/centerRotation"
                 // Squeeze
                 float Dist;
                 float Angle;
-                float fAngle = 2; // 2
+                float fAngle = 5; // 2
                 float fCoeff = .9; // .9
                 Dist = distance(i.uv.xy, float2(0.5,0.5)) * 2;
                 if (Dist < 1.0){

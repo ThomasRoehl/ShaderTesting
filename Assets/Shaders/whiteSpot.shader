@@ -1,4 +1,4 @@
-Shader "EyeProblem/blackSpot"
+Shader "EyeProblem/whiteSpot"
 {
     Properties
     {
@@ -48,9 +48,8 @@ Shader "EyeProblem/blackSpot"
                 float4 spot = tex2D(_NoiseTex, i.uv);
                 fixed4 col = tex2D(_MainTex, i.uv);
                 if (_Darkness == 0) return col;
-                float newcol = distance(i.uv.xy, float2(0.5,0.5));
-                if (spot.a != 0)
-                    col = float4(spot.r * col.r,spot.g * col.g,spot.b * col.b,col.a);
+                float newcol = distance(i.uv.xy, float2(0.7,0.4)) * _Darkness * 10;
+                col = float4((1-newcol) * col.r,(1-newcol) * col.g,(1-newcol) * col.b, col.a);
 
                 return col;
             }
