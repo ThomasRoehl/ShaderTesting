@@ -12,6 +12,7 @@ public class CameraModes : MonoBehaviour
     public Shader tutorialPart1;
     public Shader centerRotation;
     public Shader blackSpot;
+    public Shader blackSpot2;
     public Shader whiteSpot;
     public Shader boxBlurr;
     public Shader gaussianBlurr;
@@ -44,16 +45,20 @@ public class CameraModes : MonoBehaviour
             Graphics.Blit(src, dest, material);
             break;
         case 6:
-            material.shader = whiteSpot;
+            material.shader = blackSpot2;
             Graphics.Blit(src, dest, material);
             break;
         case 7:
+            material.shader = whiteSpot;
+            Graphics.Blit(src, dest, material);
+            break;
+        case 8:
             material.shader = boxBlurr;
             temporaryTexture = RenderTexture.GetTemporary(src.width, src.height);
             Graphics.Blit(src, temporaryTexture, material, 0);
             Graphics.Blit(temporaryTexture, dest, material, 1);
             break;
-        case 8:
+        case 9:
             material.shader = gaussianBlurr;
             temporaryTexture = RenderTexture.GetTemporary(src.width, src.height);
             Graphics.Blit(src, temporaryTexture, material, 0);
@@ -73,6 +78,7 @@ public class CameraModes : MonoBehaviour
         tutorialPart1 = Shader.Find("Tutorial/tutorialPart1");
         centerRotation = Shader.Find("EyeProblem/centerRotation");
         blackSpot = Shader.Find("EyeProblem/blackSpot");
+        blackSpot2 = Shader.Find("EyeProblem/blackSpot2");
         boxBlurr = Shader.Find("EyeProblem/boxBlurr");
         gaussianBlurr = Shader.Find("EyeProblem/gaussianBlurr");
         whiteSpot = Shader.Find("EyeProblem/whiteSpot");

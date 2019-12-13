@@ -51,6 +51,7 @@
      <None Include="Assets\Shaders\protanomaly.shader" />
      <None Include="Assets\Shaders\TutorialPart2.shader" />
      <None Include="Assets\Shaders\whiteSpot.shader" />
+     <None Include="Assets\Shaders\blackspot2.shader" />
      <None Include="Assets\Shaders\centerRotation.shader" />
      <None Include="Assets\Shaders\gaussianBlurr.shader" />
      <None Include="Assets\Shaders\TutorialPart1.shader" />

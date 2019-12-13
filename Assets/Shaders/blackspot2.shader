@@ -1,9 +1,9 @@
-Shader "EyeProblem/blackSpot"
+Shader "EyeProblem/blackSpot2"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _NoiseTex ("Noise Texture", 2D) = "white" {}
+        _Darkness ("Darkness", Range(0,1)) = .5
     }
     SubShader
     {
@@ -39,14 +39,16 @@ Shader "EyeProblem/blackSpot"
             }
 
             sampler2D _MainTex;
-            sampler2D _NoiseTex;
+            float _Darkness;
 
             fixed4 frag (v2f i) : SV_Target
-            {
-                float4 spot = tex2D(_NoiseTex, i.uv); 
+            { 
                 fixed4 col = tex2D(_MainTex, i.uv);
-                if (spot.a > 0)
-                    col.rgb = lerp (spot.rgb, col.rgb, 1-spot.a);
+                if (_Darkness == 0) return col;
+                float dist = distance(i.uv.xy, float2(0.5,0.5));
+
+                float darkcol = 1-(sin(pow(dist,2)) * 4.5 * (1-_Darkness));
+                col.rgb = lerp(col.rgb, float3(0,0,0), darkcol);
 
                 return col;
             }
