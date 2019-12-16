@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 [ExecuteInEditMode]
 public class CameraModes : MonoBehaviour
@@ -17,6 +18,9 @@ public class CameraModes : MonoBehaviour
     public Shader boxBlurr;
     public Shader gaussianBlurr;
     public int mode;
+
+    private PostProcessVolume ppl;
+    private DepthOfField dof;
 
     private void OnRenderImage(RenderTexture src, RenderTexture dest) {
 
@@ -64,8 +68,14 @@ public class CameraModes : MonoBehaviour
             Graphics.Blit(src, temporaryTexture, material, 0);
             Graphics.Blit(temporaryTexture, dest, material, 1);
             break;
+        case 10:
+            material.shader = normal;
+            dof.enabled.value = true;
+            Graphics.Blit(src, dest, material);
+            break;
         default:
             material.shader = normal;
+            dof.enabled.value = false;
             Graphics.Blit(src, dest, material);
             break;
         }
@@ -82,5 +92,7 @@ public class CameraModes : MonoBehaviour
         boxBlurr = Shader.Find("EyeProblem/boxBlurr");
         gaussianBlurr = Shader.Find("EyeProblem/gaussianBlurr");
         whiteSpot = Shader.Find("EyeProblem/whiteSpot");
+        ppl = GetComponent<PostProcessVolume>();
+        ppl.profile.TryGetSettings(out dof);
     }
 }
